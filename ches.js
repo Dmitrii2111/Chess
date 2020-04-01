@@ -59,41 +59,76 @@ for (i = 0; i < 64; i++){
         squareInfo.color = 'black';
         squareInfo.type = 'rook';
         squareArr[i] = squareInfo;
-    }
+    }else
     if ((i==1)||(i==6)){
         squareInfo.position =   i;
         squareInfo.color = 'black';
         squareInfo.type = 'knight';
         squareArr[i] = squareInfo; 
-    }
-    if ((i==2)||(i==5)){
+    }else if ((i==2)||(i==5)){
         squareInfo.position =   i;
         squareInfo.color = 'black';
         squareInfo.type = 'bishop';
         squareArr[i] = squareInfo; 
-    }
+    } else
     if (i==3){
         squareInfo.position =   i;
         squareInfo.color = 'black';
         squareInfo.type = 'king';
         squareArr[i] = squareInfo; 
-    }
+    } else
     if (i==4){
         squareInfo.position =   i;
         squareInfo.color = 'black';
         squareInfo.type = 'queen';
         squareArr[i] = squareInfo; 
-    }
+    } else
     if ((i>7) && (i<16)){
         squareInfo.position =   i;
         squareInfo.color = 'black';
         squareInfo.type = 'pawn';
         squareArr[i] = squareInfo;
-    }
-    if ((i>55) && (i<64)){
+    } else
+    if ((i>47) && (i<56)){
         squareInfo.position =   i;
         squareInfo.color = 'white';
         squareInfo.type = 'pawn';
+        squareArr[i] = squareInfo;
+    } else
+    if ((i==56)||(i==63)){
+        squareInfo.position = i;
+        squareInfo.color = 'white';
+        squareInfo.type = 'rook';
+        squareArr[i] = squareInfo;
+    } else
+    if ((i==57)||(i==62)){
+        squareInfo.position = i;
+        squareInfo.color = 'white';
+        squareInfo.type = 'knight';
+        squareArr[i] = squareInfo;
+    } else
+    if ((i==58)||(i==61)){
+        squareInfo.position =   i;
+        squareInfo.color = 'white';
+        squareInfo.type = 'bishop';
+        squareArr[i] = squareInfo;
+    } else 
+    if (i==59){
+        squareInfo.position =   i;
+        squareInfo.color = 'white';
+        squareInfo.type = 'king';
+        squareArr[i] = squareInfo; 
+    } else
+    if (i==60){
+        squareInfo.position =   i;
+        squareInfo.color = 'white';
+        squareInfo.type = 'queen';
+        squareArr[i] = squareInfo; 
+    } else
+    {
+        squareInfo.position =   i;
+        squareInfo.color = 'unset';
+        squareInfo.type = 'unset';
         squareArr[i] = squareInfo;
     }
 }
@@ -112,19 +147,43 @@ for(let i = 0; i<64; i++){
         }
     }
     if(squareArr[i].type === 'rook'){
-        square[i].innerHTML = figurs.black.rook;
+        if(squareArr[i].color === 'black'){
+            square[i].innerHTML = figurs.black.rook;
+        }
+        if(squareArr[i].color === 'white'){
+            square[i].innerHTML = figurs.white.rook;
+        }
     }
     if(squareArr[i].type === 'queen'){
-        square[i].innerHTML = figurs.black.queen;
+        if(squareArr[i].color === 'black'){
+            square[i].innerHTML = figurs.black.queen;
+        }
+        if(squareArr[i].color === 'white'){
+            square[i].innerHTML = figurs.white.queen;
+        }
     }
     if(squareArr[i].type === 'king'){
-        square[i].innerHTML = figurs.black.king;
+        if(squareArr[i].color === 'black'){
+            square[i].innerHTML = figurs.black.king;
+        }
+        if(squareArr[i].color === 'white'){
+            square[i].innerHTML = figurs.white.king;
+        }
     }
     if(squareArr[i].type === 'knight'){
-        square[i].innerHTML = figurs.black.knight;
+        if(squareArr[i].color === 'black'){
+            square[i].innerHTML = figurs.black.knight;
+        }
+        if(squareArr[i].color === 'white'){
+            square[i].innerHTML = figurs.white.knight;
+        }
     }
     if(squareArr[i].type === 'bishop'){
-        square[i].innerHTML = figurs.black.bishop;
+        if(squareArr[i].color === 'black'){
+            square[i].innerHTML = figurs.black.bishop;
+        }
+        if(squareArr[i].color === 'white'){
+            square[i].innerHTML = figurs.white.bishop;
+        }
     }
 }
-
