@@ -21,7 +21,7 @@ function addSquares (extraClass) {
     const ches = document.querySelector('#chess');
     const square = document.createElement('div');
     square.classList.add('square');
-    //square.innerHTML = figurs.black.knight;
+   // square.innerHTML = figurs.black.rook;
     if (extraClass) square.classList.add(extraClass);
 
     chess.append(square);
@@ -43,6 +43,88 @@ for (let i = 0; i < 64; i++) {
   
     addSquares(colorClass);
 }
-let a = new Object
 
+let listOfSquares = document.querySelectorAll('square');
+let squareArr = new Array;
+for (i = 0; i < 64; i++){
+    squareArr.push(listOfSquares[i]);
+}
+
+
+
+for (i = 0; i < 64; i++){
+    let squareInfo = new Object;
+    if ((i==0)||(i==7)) {
+        squareInfo.position =   i;
+        squareInfo.color = 'black';
+        squareInfo.type = 'rook';
+        squareArr[i] = squareInfo;
+    }
+    if ((i==1)||(i==6)){
+        squareInfo.position =   i;
+        squareInfo.color = 'black';
+        squareInfo.type = 'knight';
+        squareArr[i] = squareInfo; 
+    }
+    if ((i==2)||(i==5)){
+        squareInfo.position =   i;
+        squareInfo.color = 'black';
+        squareInfo.type = 'bishop';
+        squareArr[i] = squareInfo; 
+    }
+    if (i==3){
+        squareInfo.position =   i;
+        squareInfo.color = 'black';
+        squareInfo.type = 'king';
+        squareArr[i] = squareInfo; 
+    }
+    if (i==4){
+        squareInfo.position =   i;
+        squareInfo.color = 'black';
+        squareInfo.type = 'queen';
+        squareArr[i] = squareInfo; 
+    }
+    if ((i>7) && (i<16)){
+        squareInfo.position =   i;
+        squareInfo.color = 'black';
+        squareInfo.type = 'pawn';
+        squareArr[i] = squareInfo;
+    }
+    if ((i>55) && (i<64)){
+        squareInfo.position =   i;
+        squareInfo.color = 'white';
+        squareInfo.type = 'pawn';
+        squareArr[i] = squareInfo;
+    }
+}
+
+
+console.log(squareArr);
+
+for(let i = 0; i<64; i++){
+    let square = document.querySelectorAll('.square');
+    if(squareArr[i].type === 'pawn'){
+        if(squareArr[i].color === 'black'){
+            square[i].innerHTML = figurs.black.pawn;
+        }
+        if(squareArr[i].color === 'white'){
+            square[i].innerHTML = figurs.white.pawn;
+        }
+    }
+    if(squareArr[i].type === 'rook'){
+        square[i].innerHTML = figurs.black.rook;
+    }
+    if(squareArr[i].type === 'queen'){
+        square[i].innerHTML = figurs.black.queen;
+    }
+    if(squareArr[i].type === 'king'){
+        square[i].innerHTML = figurs.black.king;
+    }
+    if(squareArr[i].type === 'knight'){
+        square[i].innerHTML = figurs.black.knight;
+    }
+    if(squareArr[i].type === 'bishop'){
+        square[i].innerHTML = figurs.black.bishop;
+    }
+}
 
