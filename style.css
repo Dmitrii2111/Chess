@@ -40,3 +40,8 @@
   .square.dark {
     background: darkcyan;
   }
+
+  .square.active {
+    outline: 3px solid yellow; 
+    outline-offset: -4px;
+  }

@@ -17,173 +17,77 @@ const figurs = {
     }    
 }
 
-function addSquares (extraClass) {
+const board = [
+    { color: 'dark', figure: figurs.black.rook, active: false}, {color: 'light', figure: figurs.black.knight, active: false}, { color: 'dark', figure: figurs.black.bishop, active: false}, {color: 'light', figure: figurs.black.king, active: false}, { color: 'dark', figure: figurs.black.queen, active: false}, {color: 'light', figure: figurs.black.bishop, active: false}, { color: 'dark', figure: figurs.black.knight, active: false}, {color: 'light', figure: figurs.black.rook, active: false},
+    {color: 'light', figure: figurs.black.pawn, active: false}, { color: 'dark', figure: figurs.black.pawn, active: false}, {color: 'light', figure: figurs.black.pawn, active: false}, { color: 'dark', figure: figurs.black.pawn, active: false}, {color: 'light', figure: figurs.black.pawn, active: false}, { color: 'dark', figure: figurs.black.pawn, active: false}, {color: 'light', figure: figurs.black.pawn, active: false}, { color: 'dark', figure: figurs.black.pawn, active: false},
+    { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false},
+    {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null}, { color: 'dark', figure: null, active: false},
+    { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false},
+    {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false},
+    { color: 'dark', figure: figurs.white.pawn, active: false}, {color: 'light', figure: figurs.white.pawn, active: false}, { color: 'dark', figure: figurs.white.pawn, active: false}, {color: 'light', figure: figurs.white.pawn, active: false}, { color: 'dark', figure: figurs.white.pawn, active: false}, {color: 'light', figure: figurs.white.pawn, active: false}, { color: 'dark', figure: figurs.white.pawn, active: false}, {color: 'light', figure: figurs.white.pawn, active: false},
+    {color: 'light', figure: figurs.white.rook, active: false}, { color: 'dark', figure: figurs.white.knight, active: false}, {color: 'light', figure: figurs.white.bishop, active: false}, { color: 'dark', figure: figurs.white.king, active: false}, {color: 'light', figure: figurs.white.queen, active: false}, { color: 'dark', figure: figurs.white.bishop, active: false}, {color: 'light', figure: figurs.white.knight, active: false}, { color: 'dark', figure: figurs.white.rook, active: false},
+];
+
+
+
+function getChessBoard () {
+    board.forEach(function(item, index){
+        const options = {
+            color: item.color,
+            figure: item.figure,
+            index: index,
+            active: item.active,
+            };
+            addSquares(options);
+        });
+};
+
+function addSquares (options) {
+    const {
+        color,
+        figure,
+        index,
+        active,
+    } = options;
     const ches = document.querySelector('#chess');
     const square = document.createElement('div');
     square.classList.add('square');
-   // square.innerHTML = figurs.black.rook;
-    if (extraClass) square.classList.add(extraClass);
-
+    square.addEventListener('click', () => eventMove(index));
+   
+    if (figure) square.innerHTML = figure;
+    if (color) square.classList.add(color);
+    if (active) square.classList.add('active');
     chess.append(square);
+};
 
-}
+function eventMove(index){
+    let currentActiveIndex;
+    const isActiveCell = board.filter(function(item, inndexActiveSquare){
+        if (item.active) currentActiveIndex = inndexActiveSquare;
+        return item.active;
+    });
 
 
-const color = {
-    one: 'light',
-    two: 'dark'
-}
-
-for (let i = 0; i < 64; i++) {
-    if (!(i%8)){
-        color.one = (color.one === 'light') ? 'dark' : 'light';
-        color.two = (color.two === 'light') ? 'dark' : 'light';
+    if(!isActiveCell[0] && board[index].figure) {
+        board[index].active = true;
+        
     }
-    const colorClass = i%2 ? color.one : color.two;
-  
-    addSquares(colorClass);
-}
 
-let listOfSquares = document.querySelectorAll('square');
-let squareArr = new Array;
-for (i = 0; i < 64; i++){
-    squareArr.push(listOfSquares[i]);
-}
+    if(isActiveCell[0]) {
+        
+        board[index].figure = board[currentActiveIndex].figure;
+        board[currentActiveIndex].figure = null;
+        board[currentActiveIndex].active = false;
+    };
+    
+   redrawBoard(); 
+};
 
+function redrawBoard (){ //перерисовывает клетку по клику
+    let chess = document.querySelector('#chess');
+    chess.innerHTML = '';
+    getChessBoard();
+};
 
+getChessBoard();
 
-for (i = 0; i < 64; i++){
-    let squareInfo = new Object;
-    if ((i==0)||(i==7)) {
-        squareInfo.position =   i;
-        squareInfo.color = 'black';
-        squareInfo.type = 'rook';
-        squareArr[i] = squareInfo;
-    }else
-    if ((i==1)||(i==6)){
-        squareInfo.position =   i;
-        squareInfo.color = 'black';
-        squareInfo.type = 'knight';
-        squareArr[i] = squareInfo; 
-    }else if ((i==2)||(i==5)){
-        squareInfo.position =   i;
-        squareInfo.color = 'black';
-        squareInfo.type = 'bishop';
-        squareArr[i] = squareInfo; 
-    } else
-    if (i==3){
-        squareInfo.position =   i;
-        squareInfo.color = 'black';
-        squareInfo.type = 'king';
-        squareArr[i] = squareInfo; 
-    } else
-    if (i==4){
-        squareInfo.position =   i;
-        squareInfo.color = 'black';
-        squareInfo.type = 'queen';
-        squareArr[i] = squareInfo; 
-    } else
-    if ((i>7) && (i<16)){
-        squareInfo.position =   i;
-        squareInfo.color = 'black';
-        squareInfo.type = 'pawn';
-        squareArr[i] = squareInfo;
-    } else
-    if ((i>47) && (i<56)){
-        squareInfo.position =   i;
-        squareInfo.color = 'white';
-        squareInfo.type = 'pawn';
-        squareArr[i] = squareInfo;
-    } else
-    if ((i==56)||(i==63)){
-        squareInfo.position = i;
-        squareInfo.color = 'white';
-        squareInfo.type = 'rook';
-        squareArr[i] = squareInfo;
-    } else
-    if ((i==57)||(i==62)){
-        squareInfo.position = i;
-        squareInfo.color = 'white';
-        squareInfo.type = 'knight';
-        squareArr[i] = squareInfo;
-    } else
-    if ((i==58)||(i==61)){
-        squareInfo.position =   i;
-        squareInfo.color = 'white';
-        squareInfo.type = 'bishop';
-        squareArr[i] = squareInfo;
-    } else 
-    if (i==59){
-        squareInfo.position =   i;
-        squareInfo.color = 'white';
-        squareInfo.type = 'king';
-        squareArr[i] = squareInfo; 
-    } else
-    if (i==60){
-        squareInfo.position =   i;
-        squareInfo.color = 'white';
-        squareInfo.type = 'queen';
-        squareArr[i] = squareInfo; 
-    } else
-    {
-        squareInfo.position =   i;
-        squareInfo.color = 'unset';
-        squareInfo.type = 'unset';
-        squareArr[i] = squareInfo;
-    }
-}
-
-
-console.log(squareArr);
-
-for(let i = 0; i<64; i++){
-    let square = document.querySelectorAll('.square');
-    if(squareArr[i].type === 'pawn'){
-        if(squareArr[i].color === 'black'){
-            square[i].innerHTML = figurs.black.pawn;
-        }
-        if(squareArr[i].color === 'white'){
-            square[i].innerHTML = figurs.white.pawn;
-        }
-    }
-    if(squareArr[i].type === 'rook'){
-        if(squareArr[i].color === 'black'){
-            square[i].innerHTML = figurs.black.rook;
-        }
-        if(squareArr[i].color === 'white'){
-            square[i].innerHTML = figurs.white.rook;
-        }
-    }
-    if(squareArr[i].type === 'queen'){
-        if(squareArr[i].color === 'black'){
-            square[i].innerHTML = figurs.black.queen;
-        }
-        if(squareArr[i].color === 'white'){
-            square[i].innerHTML = figurs.white.queen;
-        }
-    }
-    if(squareArr[i].type === 'king'){
-        if(squareArr[i].color === 'black'){
-            square[i].innerHTML = figurs.black.king;
-        }
-        if(squareArr[i].color === 'white'){
-            square[i].innerHTML = figurs.white.king;
-        }
-    }
-    if(squareArr[i].type === 'knight'){
-        if(squareArr[i].color === 'black'){
-            square[i].innerHTML = figurs.black.knight;
-        }
-        if(squareArr[i].color === 'white'){
-            square[i].innerHTML = figurs.white.knight;
-        }
-    }
-    if(squareArr[i].type === 'bishop'){
-        if(squareArr[i].color === 'black'){
-            square[i].innerHTML = figurs.black.bishop;
-        }
-        if(squareArr[i].color === 'white'){
-            square[i].innerHTML = figurs.white.bishop;
-        }
-    }
-}
