@@ -18,14 +18,14 @@ const figurs = {
 }
 
 const board = [
-    { color: 'dark', figure: figurs.black.rook, active: false}, {color: 'light', figure: figurs.black.knight, active: false}, { color: 'dark', figure: figurs.black.bishop, active: false}, {color: 'light', figure: figurs.black.king, active: false}, { color: 'dark', figure: figurs.black.queen, active: false}, {color: 'light', figure: figurs.black.bishop, active: false}, { color: 'dark', figure: figurs.black.knight, active: false}, {color: 'light', figure: figurs.black.rook, active: false},
-    {color: 'light', figure: figurs.black.pawn, active: false}, { color: 'dark', figure: figurs.black.pawn, active: false}, {color: 'light', figure: figurs.black.pawn, active: false}, { color: 'dark', figure: figurs.black.pawn, active: false}, {color: 'light', figure: figurs.black.pawn, active: false}, { color: 'dark', figure: figurs.black.pawn, active: false}, {color: 'light', figure: figurs.black.pawn, active: false}, { color: 'dark', figure: figurs.black.pawn, active: false},
-    { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false},
-    {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null}, { color: 'dark', figure: null, active: false},
-    { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false},
-    {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false},
-    { color: 'dark', figure: figurs.white.pawn, active: false}, {color: 'light', figure: figurs.white.pawn, active: false}, { color: 'dark', figure: figurs.white.pawn, active: false}, {color: 'light', figure: figurs.white.pawn, active: false}, { color: 'dark', figure: figurs.white.pawn, active: false}, {color: 'light', figure: figurs.white.pawn, active: false}, { color: 'dark', figure: figurs.white.pawn, active: false}, {color: 'light', figure: figurs.white.pawn, active: false},
-    {color: 'light', figure: figurs.white.rook, active: false}, { color: 'dark', figure: figurs.white.knight, active: false}, {color: 'light', figure: figurs.white.bishop, active: false}, { color: 'dark', figure: figurs.white.king, active: false}, {color: 'light', figure: figurs.white.queen, active: false}, { color: 'dark', figure: figurs.white.bishop, active: false}, {color: 'light', figure: figurs.white.knight, active: false}, { color: 'dark', figure: figurs.white.rook, active: false},
+    {color: 'dark', figure: figurs.black.rook, active: false, chessColor: 'black'}, {color: 'light', figure: figurs.black.knight, active: false, chessColor: 'black'}, { color: 'dark', figure: figurs.black.bishop, active: false, chessColor: 'black'}, {color: 'light', figure: figurs.black.king, active: false, chessColor: 'black'}, { color: 'dark', figure: figurs.black.queen, active: false, chessColor: 'black'}, {color: 'light', figure: figurs.black.bishop, active: false, chessColor: 'black'}, { color: 'dark', figure: figurs.black.knight, active: false, chessColor: 'black'}, {color: 'light', figure: figurs.black.rook, active: false, chessColor: 'black'},
+    {color: 'light', figure: figurs.black.pawn, active: false, chessColor: 'black'}, {color: 'dark', figure: figurs.black.pawn, active: false, chessColor: 'black'}, {color: 'light', figure: figurs.black.pawn, active: false, chessColor: 'black'}, { color: 'dark', figure: figurs.black.pawn, active: false, chessColor: 'black'}, {color: 'light', figure: figurs.black.pawn, active: false, chessColor: 'black'}, { color: 'dark', figure: figurs.black.pawn, active: false, chessColor: 'black'}, {color: 'light', figure: figurs.black.pawn, active: false, chessColor: 'black'}, { color: 'dark', figure: figurs.black.pawn, active: false, chessColor: 'black'},
+    {color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false}, {color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false}, { color: 'dark', figure: null, active: false}, {color: 'light', figure: null, active: false},
+    {color: 'light', figure: null, active: false, chessColor: null}, {color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null}, { color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null}, { color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null}, { color: 'dark', figure: null, active: false, chessColor: null},
+    {color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null}, {color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null}, { color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null}, { color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null},
+    {color: 'light', figure: null, active: false, chessColor: null}, {color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null}, { color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null}, { color: 'dark', figure: null, active: false, chessColor: null}, {color: 'light', figure: null, active: false, chessColor: null}, { color: 'dark', figure: null, active: false, chessColor: null},
+    {color: 'dark', figure: figurs.white.pawn, active: false, chessColor: 'white'}, {color: 'light', figure: figurs.white.pawn, active: false, chessColor: 'white'}, { color: 'dark', figure: figurs.white.pawn, active: false, chessColor: 'white'}, {color: 'light', figure: figurs.white.pawn, active: false, chessColor: 'white'}, { color: 'dark', figure: figurs.white.pawn, active: false, chessColor: 'white'}, {color: 'light', figure: figurs.white.pawn, active: false, chessColor: 'white'}, { color: 'dark', figure: figurs.white.pawn, active: false, chessColor: 'white'}, {color: 'light', figure: figurs.white.pawn, active: false, chessColor: 'white'},
+    {color: 'light', figure: figurs.white.rook, active: false, chessColor: 'white'}, {color: 'dark', figure: figurs.white.knight, active: false, chessColor: 'white'}, {color: 'light', figure: figurs.white.bishop, active: false, chessColor: 'white'}, { color: 'dark', figure: figurs.white.king, active: false, chessColor: 'white'}, {color: 'light', figure: figurs.white.queen, active: false, chessColor: 'white'}, { color: 'dark', figure: figurs.white.bishop, active: false, chessColor: 'white'}, {color: 'light', figure: figurs.white.knight, active: false, chessColor: 'white'}, { color: 'dark', figure: figurs.white.rook, active: false, chessColor: 'white'},
 ];
 
 
@@ -74,13 +74,30 @@ function eventMove(index){
     }
 
     if(isActiveCell[0]) {
-        
-        board[index].figure = board[currentActiveIndex].figure;
-        board[currentActiveIndex].figure = null;
-        board[currentActiveIndex].active = false;
+        if(board[index].chessColor === board[currentActiveIndex].chessColor) {
+            alert('error');
+        } else {
+            board[index].figure = board[currentActiveIndex].figure;
+            board[index].chessColor = board[currentActiveIndex].chessColor;
+            board[currentActiveIndex].figure = null;
+            board[currentActiveIndex].chessColor = null;
+            board[currentActiveIndex].active = false; 
+            };
     };
-    
-   redrawBoard(); 
+    //console.log(board);
+    let history = new Array;
+    if(board[index].active = true){
+        let activeTurn = {
+            Figure: board[index].figure,
+            Color: board[index].chessColor,
+            from: board[index],
+            to: board[currentActiveIndex],
+        }
+        history.push(activeTurn);
+    }
+   redrawBoard();
+   console.log(history); 
+   
 };
 
 function redrawBoard (){ //перерисовывает клетку по клику
